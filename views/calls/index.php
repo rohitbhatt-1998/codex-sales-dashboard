@@ -1,6 +1,7 @@
 <h1>Call System</h1>
 <section class="panel">
 <h3>Select Customers</h3>
+<form method="post" action="<?= url('/calls/call-now') ?>">
 <form method="post" action="/calls/call-now">
 <div class="customer-grid">
 <?php foreach ($customers as $c): ?>

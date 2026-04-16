@@ -33,7 +33,7 @@ class CallController
 
         if (!$customers) {
             Session::flash('success', 'No customers selected');
-            header('Location: /calls');
+            header('Location: ' . url('/calls'));
             return;
         }
 
@@ -43,6 +43,6 @@ class CallController
         $failed = count($results) - $done;
 
         Session::flash('success', "Calling done: {$done} completed, {$failed} failed.");
-        header('Location: /calls');
+        header('Location: ' . url('/calls'));
     }
 }

@@ -30,12 +30,13 @@ class CustomerController
 
         if (!$name || !$phone) {
             Session::flash('success', 'Name and phone are required');
-            header('Location: /customers');
+            header('Location: ' . url('/customers'));
             return;
         }
 
         Customer::create(['user_id' => (int)$user['id'], 'name' => $name, 'phone' => $phone, 'custom_fields' => $customFields]);
         Session::flash('success', 'Customer added successfully');
+        header('Location: ' . url('/customers'));
         header('Location: /customers');
     }
 
@@ -53,7 +54,7 @@ class CustomerController
             Session::flash('success', 'Customer updated');
         }
 
-        header('Location: /customers');
+        header('Location: ' . url('/customers'));
     }
 
     public function delete(): void
@@ -65,7 +66,7 @@ class CustomerController
             Customer::delete($id, (int)$user['id']);
             Session::flash('success', 'Customer deleted');
         }
-        header('Location: /customers');
+        header('Location: ' . url('/customers'));
     }
 
     public function uploadCsv(): void
@@ -75,13 +76,14 @@ class CustomerController
 
         if (empty($_FILES['csv']['tmp_name'])) {
             Session::flash('success', 'CSV file required');
-            header('Location: /customers');
+            header('Location: ' . url('/customers'));
             return;
         }
 
         $handle = fopen($_FILES['csv']['tmp_name'], 'r');
         if (!$handle) {
             Session::flash('success', 'Could not open CSV');
+            header('Location: ' . url('/customers'));
             header('Location: /customers');
             return;
         }
@@ -90,6 +92,7 @@ class CustomerController
         if (!$header) {
             fclose($handle);
             Session::flash('success', 'Invalid CSV format');
+            header('Location: ' . url('/customers'));
             header('Location: /customers');
             return;
         }
@@ -107,6 +110,7 @@ class CustomerController
 
         fclose($handle);
         Session::flash('success', 'CSV uploaded successfully');
+        header('Location: ' . url('/customers'));
         header('Location: /customers');
     }
 

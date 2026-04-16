@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>AI Sales Agent</title>
+    <link rel="stylesheet" href="<?= url('/public/assets/css/app.css') ?>">
     <link rel="stylesheet" href="/public/assets/css/app.css">
 </head>
 <body>
@@ -14,6 +15,12 @@
         <?php if ($user): ?>
             <p><?= htmlspecialchars($user['name']) ?> (<?= htmlspecialchars($user['role']) ?>)</p>
             <nav>
+                <a href="<?= url('/dashboard') ?>">Dashboard</a>
+                <a href="<?= url('/customers') ?>">Customers</a>
+                <a href="<?= url('/calls') ?>">Calls</a>
+                <a href="<?= url('/knowledge-base') ?>">Knowledge Base</a>
+                <?php if ($user['role'] === 'admin'): ?><a href="<?= url('/settings') ?>">Settings</a><?php endif; ?>
+                <a href="<?= url('/logout') ?>">Logout</a>
                 <a href="/dashboard">Dashboard</a>
                 <a href="/customers">Customers</a>
                 <a href="/calls">Calls</a>

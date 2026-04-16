@@ -20,13 +20,13 @@ class AuthController
         $user = User::findByEmail($email);
         if (!$user || !password_verify($password, $user['password'])) {
             Session::flash('error', 'Invalid credentials');
-            header('Location: /login');
+            header('Location: ' . url('/login'));
             exit;
         }
 
         unset($user['password']);
         Session::set('user', $user);
-        header('Location: /dashboard');
+        header('Location: ' . url('/dashboard'));
     }
 
     public function showRegister(): void
@@ -42,23 +42,26 @@ class AuthController
 
         if (!$name || !$email || strlen($password) < 6) {
             Session::flash('error', 'Invalid input data');
-            header('Location: /register');
+            header('Location: ' . url('/register'));
             exit;
         }
 
         if (User::findByEmail($email)) {
             Session::flash('error', 'Email already registered');
+            header('Location: ' . url('/register'));
             header('Location: /register');
             exit;
         }
 
         User::create(['name' => $name, 'email' => $email, 'password' => $password, 'role' => 'user']);
+        header('Location: ' . url('/login'));
         header('Location: /login');
     }
 
     public function logout(): void
     {
         Session::destroy();
+        header('Location: ' . url('/login'));
         header('Location: /login');
     }
 }
