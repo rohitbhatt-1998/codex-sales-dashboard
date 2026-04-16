@@ -49,16 +49,19 @@ class AuthController
         if (User::findByEmail($email)) {
             Session::flash('error', 'Email already registered');
             header('Location: ' . url('/register'));
+            header('Location: /register');
             exit;
         }
 
         User::create(['name' => $name, 'email' => $email, 'password' => $password, 'role' => 'user']);
         header('Location: ' . url('/login'));
+        header('Location: /login');
     }
 
     public function logout(): void
     {
         Session::destroy();
         header('Location: ' . url('/login'));
+        header('Location: /login');
     }
 }

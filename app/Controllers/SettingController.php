@@ -31,5 +31,6 @@ class SettingController
 
         Session::flash('success', 'Settings saved');
         header('Location: ' . url('/settings'));
+        header('Location: /settings');
     }
 }

@@ -2,6 +2,7 @@
 <section class="panel">
 <h3>Select Customers</h3>
 <form method="post" action="<?= url('/calls/call-now') ?>">
+<form method="post" action="/calls/call-now">
 <div class="customer-grid">
 <?php foreach ($customers as $c): ?>
 <label><input type="checkbox" name="customer_ids[]" value="<?= (int)$c['id'] ?>"> <?= htmlspecialchars($c['name']) ?> (<?= htmlspecialchars($c['phone']) ?>)</label>

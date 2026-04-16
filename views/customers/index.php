@@ -2,6 +2,7 @@
 <section class="panel">
   <h3>Add Customer</h3>
   <form method="post" action="<?= url('/customers/store') ?>" class="grid-form">
+  <form method="post" action="/customers/store" class="grid-form">
     <input name="name" placeholder="Name" required>
     <input name="phone" placeholder="Phone" required>
     <input name="custom_fields" placeholder="Custom fields (key:value,key2:value2)">
@@ -12,6 +13,7 @@
 <section class="panel">
   <h3>Upload CSV</h3>
   <form method="post" action="<?= url('/customers/upload-csv') ?>" enctype="multipart/form-data">
+  <form method="post" action="/customers/upload-csv" enctype="multipart/form-data">
     <input type="file" name="csv" accept=".csv" required>
     <button type="submit">Upload</button>
   </form>
@@ -29,6 +31,7 @@
   <td><?= htmlspecialchars($c['call_status']) ?></td>
   <td>
     <form method="post" action="<?= url('/customers/delete') ?>" onsubmit="return confirm('Delete customer?')">
+    <form method="post" action="/customers/delete" onsubmit="return confirm('Delete customer?')">
       <input type="hidden" name="id" value="<?= (int)$c['id'] ?>">
       <button type="submit">Delete</button>
     </form>

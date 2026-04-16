@@ -24,6 +24,7 @@ class KnowledgeController
         if (empty($_FILES['doc']['tmp_name'])) {
             Session::flash('success', 'Please select a file');
             header('Location: ' . url('/knowledge-base'));
+            header('Location: /knowledge-base');
             return;
         }
 
@@ -32,6 +33,7 @@ class KnowledgeController
         if (!in_array($ext, ['txt', 'pdf'], true)) {
             Session::flash('success', 'Only TXT or PDF allowed');
             header('Location: ' . url('/knowledge-base'));
+            header('Location: /knowledge-base');
             return;
         }
 
@@ -57,5 +59,6 @@ class KnowledgeController
 
         Session::flash('success', 'Knowledge base updated');
         header('Location: ' . url('/knowledge-base'));
+        header('Location: /knowledge-base');
     }
 }

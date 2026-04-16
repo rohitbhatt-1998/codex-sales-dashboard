@@ -37,6 +37,7 @@ class CustomerController
         Customer::create(['user_id' => (int)$user['id'], 'name' => $name, 'phone' => $phone, 'custom_fields' => $customFields]);
         Session::flash('success', 'Customer added successfully');
         header('Location: ' . url('/customers'));
+        header('Location: /customers');
     }
 
     public function update(): void
@@ -83,6 +84,7 @@ class CustomerController
         if (!$handle) {
             Session::flash('success', 'Could not open CSV');
             header('Location: ' . url('/customers'));
+            header('Location: /customers');
             return;
         }
 
@@ -91,6 +93,7 @@ class CustomerController
             fclose($handle);
             Session::flash('success', 'Invalid CSV format');
             header('Location: ' . url('/customers'));
+            header('Location: /customers');
             return;
         }
 
@@ -108,6 +111,7 @@ class CustomerController
         fclose($handle);
         Session::flash('success', 'CSV uploaded successfully');
         header('Location: ' . url('/customers'));
+        header('Location: /customers');
     }
 
     private function parseCustomFields(string $input): array

@@ -23,6 +23,7 @@ class Auth
     {
         if (!self::check()) {
             header('Location: ' . url('/login'));
+            header('Location: /login');
             exit;
         }
     }

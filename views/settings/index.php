@@ -1,5 +1,6 @@
 <h1>Settings</h1>
 <form method="post" action="<?= url('/settings/save') ?>" class="grid-form">
+<form method="post" action="/settings/save" class="grid-form">
   <label>Calling Provider
     <select name="call_provider">
       <option value="twilio" <?= (($settings['call_provider'] ?? '') === 'twilio') ? 'selected' : '' ?>>Twilio</option>

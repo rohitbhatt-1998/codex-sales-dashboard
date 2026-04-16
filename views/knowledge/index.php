@@ -1,6 +1,7 @@
 <h1>Knowledge Base</h1>
 <section class="panel">
 <form method="post" action="<?= url('/knowledge-base/upload') ?>" enctype="multipart/form-data">
+<form method="post" action="/knowledge-base/upload" enctype="multipart/form-data">
 <input type="file" name="doc" accept=".txt,.pdf" required>
 <button type="submit">Upload PDF/TXT</button>
 </form>
